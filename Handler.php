@@ -23,7 +23,7 @@ try {
         'subject' => $subject,
         'text' => $text,
         'html' => $html,
-    ], true));
+    ], true) . PHP_EOL . PHP_EOL, FILE_APPEND);
 
 
     $message = "📧 *New Email Received*\n";
@@ -43,6 +43,6 @@ try {
 } catch (Throwable $t) {
     file_put_contents(__DIR__.'/out.txt', print_r([
         'error' => $t->getMessage(),
-    ], true));
+    ], true) . PHP_EOL . PHP_EOL, FILE_APPEND);
 }
 
