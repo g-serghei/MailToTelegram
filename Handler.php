@@ -4,15 +4,14 @@
 require_once __DIR__.'/vendor/autoload.php';
 
 try {
-    $parser = new eXorus\PhpMimeMailParser\Parser();
+    $rawEmail = file_get_contents('php://stdin');
+    $message = ZBateson\MailMimeParser\Message::from($rawEmail, true);
 
-    $parser->setStream(fopen("php://stdin", "r"));
-
-    $rawHeaderTo = $parser->getHeader('to');
-    $rawHeaderFrom = $parser->getHeader('from');
-    $subject = $parser->getHeader('subject');
-    $text = $parser->getMessageBody('text');
-    $html = $parser->getMessageBody('html');
+    $rawHeaderTo = $message->getHeaderValue('to');
+    $rawHeaderFrom = $message->getHeaderValue('from');
+    $subject = $message->getHeaderValue('subject');
+    $text = $message->getTextContent();
+    $html = $message->getHtmlContent();
 
     file_put_contents(__DIR__.'/out.txt', print_r([
         'rawHeaderTo' => $rawHeaderTo,

@@ -1,5 +1,13 @@
 {
+    "name": "serghei/mail-to-telegram",
+    "description": "MailToTelegram",
+    "authors": [
+        {
+            "name": "Serghei",
+            "email": "g@serghei.md"
+        }
+    ],
     "require": {
-        "php-mime-mail-parser/php-mime-mail-parser": "^1.0"
+        "zbateson/mail-mime-parser": "^3.0"
     }
 }
