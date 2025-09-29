@@ -8,6 +8,7 @@
         }
     ],
     "require": {
-        "zbateson/mail-mime-parser": "^3.0"
+        "zbateson/mail-mime-parser": "^3.0",
+        "vlucas/phpdotenv": "^5.6"
     }
 }
