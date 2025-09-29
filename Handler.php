@@ -7,9 +7,6 @@ try {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    var_dump($_ENV['TELEGRAM_BOT_TOKEN']);
-    die();
-
     $rawEmail = file_get_contents('php://stdin');
     $message = ZBateson\MailMimeParser\Message::from($rawEmail, true);
 
@@ -38,8 +35,8 @@ try {
     $message .= "*Attachments:* " . $attachmentsCount . "\n";
 
     // Telegram API request
-    $botToken = getenv('TELEGRAM_BOT_TOKEN');
-    $chatId = getenv('TELEGRAM_CHAT_ID');
+    $botToken = $_ENV['TELEGRAM_BOT_TOKEN'];
+    $chatId = $_ENV['TELEGRAM_CHAT_ID'];
 
     $sendTextUrl = "https://api.telegram.org/bot$botToken/sendMessage";
     file_get_contents($sendTextUrl . "?chat_id=$chatId&parse_mode=Markdown&text=" . urlencode($message));
