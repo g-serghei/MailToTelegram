@@ -7,7 +7,7 @@ try {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    var_dump(getenv('TELEGRAM_BOT_TOKEN'));
+    var_dump($_ENV['TELEGRAM_BOT_TOKEN']);
     die();
 
     $rawEmail = file_get_contents('php://stdin');
